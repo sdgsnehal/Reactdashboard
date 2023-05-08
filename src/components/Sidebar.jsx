@@ -9,7 +9,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 const Sidebar = () => {
    const {activeMenu ,setActiveMenu,screenSize,currentColor} = useStateContext();
    const handleCloseSideBar = ()=>{
-    if(activeMenu && screenSize<=900){
+    if(activeMenu !== undefined && screenSize<=900){
       setActiveMenu(false);
     }
   }
@@ -33,8 +33,9 @@ const Sidebar = () => {
             <TooltipComponent content="Menu" position="BottomCenter">
               <button
                 type="button"
-                onClick={() => setActiveMenu((prevActiveMenu)=>!prevActiveMenu)}
+                onClick={() => setActiveMenu(!activeMenu)}
                 className="text-xl rounded-full p-3 hover:bg-light-gray mt-4"
+                style={{color:currentColor}}
               >
                 <MdOutlineCancel />
               </button>
